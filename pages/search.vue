@@ -1,15 +1,16 @@
 <template>
-  <div>
-    <input v-model="term" placeholder="アーティスト名で検索">
-    <button v-on:click="fetchResults(term)">Search</button>
+  <v-container>
+    <v-layout>
+        <v-text-field v-model="term" placeholder="スピッツ" solo></v-text-field>
+        <v-btn v-on:click="fetchResults(term)">検索</v-btn>
+    </v-layout>
     <ul>
-      <li v-for="n in count" :key="n"><nuxt-link :to="`/artists/${results[n-1].artistId}`">{{ results[n-1].artistName }}</nuxt-link></li>
+      <li v-for="n in count" :key="n"><nuxt-link :to="`/artists/${results[n-1].artistId}`"><span class="title">{{ results[n-1].artistName }}</span></nuxt-link></li>
     </ul>
-  </div>
+  </v-container>
 </template>
 
 <script>
-import Play from '~/components/Play.vue'
 import axios from 'axios'
 
 export default {

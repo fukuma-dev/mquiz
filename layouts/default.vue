@@ -2,7 +2,7 @@
   <v-app dark>
     <v-content>
       <v-container>
-        <h1>mQCRE</h1>
+        <h1>mQuiz</h1>
         <nuxt />
       </v-container>
     </v-content>
