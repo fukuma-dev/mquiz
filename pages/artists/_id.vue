@@ -1,10 +1,30 @@
 <template>
   <div>
     <h2>{{ results[0].artistName }}</h2>
-    <p>{{ count }}件</p>
-    <li v-for="n in count-1" :key="n"><nuxt-link :to="{name: 'songs-id', params: { id: results[n].trackId, previewUrl: results[n].previewUrl }}">{{ results[n].trackName }}</nuxt-link></li>
+    <p>{{ count-1 }}件</p>
+    <ul>
+      <li v-for="n in count-1" :key="n" class="my-2 song-list"><nuxt-link :to="{name: 'songs-id', params: { id: results[n-1].trackId, previewUrl: results[n-1].previewUrl }}" class="song-name">{{ results[n-1].trackName }}</nuxt-link></li> 
+    </ul>
   </div>
 </template>
+
+<style>
+.song-list {
+  list-style: none;
+  border-left: solid 10px cadetblue;
+  /* background-color: cadetblue; */
+  padding: 5px 0 5px 15px;
+
+}
+.song-name {
+    text-decoration: none;
+    color: #fff;
+    font-size: 1.2rem;
+}
+.song-name:hover {
+    opacity: 0.3;
+}
+</style>
 
 <script>
 import axios from 'axios'

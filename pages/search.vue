@@ -5,10 +5,28 @@
         <v-btn v-on:click="fetchResults(term)">検索</v-btn>
     </v-layout>
     <ul>
-      <li v-for="n in count" :key="n"><nuxt-link :to="`/artists/${results[n-1].artistId}`"><span class="title">{{ results[n-1].artistName }}</span></nuxt-link></li>
+      <li v-for="n in results" :key="n.artistId" class="my-2 artist-list"><nuxt-link :to="`/artists/${n.artistId}`" class="artist-name">{{ n.artistName }}</nuxt-link></li>
     </ul>
   </v-container>
 </template>
+
+<style>
+.artist-list {
+  list-style: none;
+  border-left: solid 10px cadetblue;
+  /* background-color: cadetblue; */
+  padding: 5px 0 5px 15px;
+
+}
+.artist-name {
+    text-decoration: none;
+    color: #fff;
+    font-size: 1.5rem;
+}
+.artist-name:hover {
+    opacity: 0.3;
+}
+</style>
 
 <script>
 import axios from 'axios'
