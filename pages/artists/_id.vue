@@ -3,7 +3,7 @@
     <h2>{{ results[0].artistName }}</h2>
     <p>{{ count-1 }}件</p>
     <ul>
-      <li v-for="n in count-1" :key="n" class="my-2 song-list"><nuxt-link :to="{name: 'songs-id', params: { id: results[n-1].trackId, previewUrl: results[n-1].previewUrl }}" class="song-name">{{ results[n-1].trackName }}</nuxt-link></li> 
+      <li v-for="n in count-1" :key="n" class="my-2 song-list"><nuxt-link :to="{name: 'songs-id', params: { id: results[n-1].trackId, previewUrl: results[n-1].previewUrl }}" class="song-name">{{ results[n-1].trackName }}</nuxt-link></li>
     </ul>
   </div>
 </template>
@@ -28,6 +28,7 @@
 
 <script>
 import axios from 'axios'
+import Search from '~/components/Search.vue'
 
 export default {
     async asyncData ({params}) {
@@ -37,6 +38,9 @@ export default {
           results: data.results,
           count: data.resultCount
         }
+    },
+    components: {
+      Search
     }
 }
 </script>
