@@ -1,38 +1,38 @@
 <template>
-  <div>
-    <h2>{{ results[0].artistName }}</h2>
-    <p>{{ count-1 }}件</p>
-    <ul>
-      <li v-for="n in count-1" :key="n" class="my-2 song-list"><nuxt-link :to="{name: 'songs-id', params: { id: results[n-1].trackId, previewUrl: results[n-1].previewUrl }}" class="song-name">{{ results[n-1].trackName }}</nuxt-link></li>
-    </ul>
-  </div>
+    <v-container>
+      <h2>{{ results[1].artistName }}</h2>
+      <p>{{ count-1 }}件</p>
+      <div v-for="n in results" :key="n.trackId">
+        <v-card v-if="n.trackName" class="pa-2 my-2" outlined tile>
+          <v-avatar>
+            <img :src="n.artworkUrl100">
+          </v-avatar>
+          <span class="ml-2">{{ n.trackName }}</span>
+          <audio :src="n.previewUrl" preload="auto" :ref="'audio'+n.trackId"></audio>
+          <v-btn @click="start('audio' + n.trackId)">start</v-btn>
+          <v-btn @click="end('audio' + n.trackId)">end</v-btn>
+        </v-card>
+      </div>
+    </v-container>
 </template>
-
-<style>
-.song-list {
-  list-style: none;
-  border-left: solid 10px cadetblue;
-  /* background-color: cadetblue; */
-  padding: 5px 0 5px 15px;
-
-}
-.song-name {
-    text-decoration: none;
-    color: #fff;
-    font-size: 1.2rem;
-}
-.song-name:hover {
-    opacity: 0.3;
-}
-</style>
 
 <script>
 import axios from 'axios'
 import Search from '~/components/Search.vue'
 
 export default {
+    methods: {
+      start(ref) {
+        this.$refs[ref][0].play()
+      },
+      end(ref) {
+          console.log(this.$refs[ref][0])
+          this.$refs[ref][0].pause()
+          this.$refs[ref][0].currentTime = 0;
+      }
+    },
     async asyncData ({params}) {
-        const { data } = await axios.get(`http://itunes.apple.com/lookup?id=${params.id}&country=JP&lang=ja_jp&entity=song`)
+        const { data } = await axios.get(`http://itunes.apple.com/lookup?id=${params.id}&country=JP&lang=ja_jp&entity=song&sort=recent&limit=200`)
 
         return {
           results: data.results,

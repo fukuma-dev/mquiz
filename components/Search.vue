@@ -17,14 +17,6 @@
     border-left: solid 10px cadetblue;
     padding: 10px 0 10px 15px;
 }
-.artist-name {
-    text-decoration: none;
-    color: #fff;
-    font-size: 1.5rem;
-}
-.artist-name:hover {
-    opacity: 0.3;
-}
 </style>
 
 <script>
