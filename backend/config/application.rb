@@ -39,5 +39,9 @@ module Backend
       'Access-Control-Allow-Origin' => 'http://localhost:61569',
       'Access-Control-Request-Method' => '*'
     }
+
+    config.middleware.use ActionDispatch::Flash
+
+    # config.action_controller.forgery_protection_origin_check = false
   end
 end
