@@ -1,8 +1,8 @@
 <template>
   <v-container>
     <v-layout>
-        <v-text-field v-model="term" placeholder="スピッツ" solo></v-text-field>
-        <v-btn v-on:click="fetchResults(term)" large>検索</v-btn>
+        <v-text-field v-model="term" v-on:keyup.enter="fetchResults(term)" placeholder="スピッツ" solo></v-text-field>
+        <v-btn @click="fetchResults(term)" large>検索</v-btn>
     </v-layout>
     <v-card v-for="n in results" :key="n.artistId" class="my-3 artist-list" :to="`/artists/${n.artistId}`" hover="true">
       <v-card-title>{{ n.artistName }}</v-card-title>
