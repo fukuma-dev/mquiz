@@ -9,7 +9,7 @@
             <img :src="n.artworkUrl100">
           </v-avatar>
           <span class="ml-2">{{ n.trackName }}</span>
-          <audio :src="n.previewUrl" preload="auto" :ref="'audio'+n.trackId"></audio>
+          <audio :src="n.previewUrl" :ref="'audio'+n.trackId"></audio>
           <v-btn @click="start('audio' + n.trackId)">start</v-btn>
           <v-btn @click="end('audio' + n.trackId)">end</v-btn>
           <v-btn flat @click="submit(n.trackId, n.trackName, n.previewUrl)">この曲をプレイリストに追加</v-btn>
