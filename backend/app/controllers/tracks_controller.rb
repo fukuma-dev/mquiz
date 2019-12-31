@@ -8,12 +8,12 @@ class TracksController < ApplicationController
   end
 
   def create
-    hash = {track_id: params[:trackId], track_name: params[:trackName], preview_url: params[:previewUrl]}
+    hash = {track_id: params[:trackId], track_name: params[:trackName], preview_url: params[:previewUrl], artist_name: params[:artistName], artist_id: params[:artistId]}
 
     @track = Track.new(hash)
 
     if @track.save
-      render plain: "プレイリストに「#{hash[:track_name]}」を保存しました"
+      render plain: "「#{hash[:track_name]}」を追加しました"
     else
       render plain: "「#{hash[:track_name]}」の登録に失敗しました"
     end
