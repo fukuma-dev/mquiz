@@ -8,8 +8,8 @@
               <h3>ユーザー情報</h3>
               <p>ユーザー名が入ります</p>
               <v-list>
-                <v-list-tile to="/search" tile flat>検索</v-list-tile>
-                <v-list-tile to="/search" tile flat>プレイリスト</v-list-tile>
+                <v-list-tile to="/" tile flat>検索</v-list-tile>
+                <v-list-tile to="/playlist" tile flat>プレイリスト</v-list-tile>
               </v-list>
             </v-container>
           </v-content>
