@@ -1,5 +1,5 @@
 {
-  "name": "chosei-kanji",
+  "name": "mquiz",
   "version": "1.0.0",
   "description": "My extraordinary Nuxt.js project",
   "author": "Ryutaro",
@@ -15,11 +15,11 @@
     "cross-env": "^5.2.0",
     "nuxt": "^2.4.0",
     "sass-loader": "^8.0.0",
-    "vuetify": "^1.5.5",
-    "vuetify-audio": "^0.0.8",
     "vuetify-loader": "^1.2.1"
   },
   "devDependencies": {
+    "@fortawesome/fontawesome-free": "^5.12.0",
+    "@nuxtjs/vuetify": "^1.9.1",
     "nodemon": "^1.18.9",
     "stylus": "^0.54.5",
     "stylus-loader": "^3.0.2"

@@ -1,23 +1,23 @@
 <template>
   <v-app>
     <custom-header></custom-header>
-      <v-layout row wrap>
-        <v-flex sm4 xs12 pa-0>
-          <v-content>
-            <v-container>
-              <h3>ユーザー情報</h3>
-              <p>ユーザー名が入ります</p>
-              <v-list>
-                <v-list-tile to="/" tile flat>検索</v-list-tile>
-                <v-list-tile to="/playlist" tile flat>プレイリスト</v-list-tile>
-              </v-list>
-            </v-container>
-          </v-content>
-        </v-flex>
-        <v-flex sm8 xs12 py-0>
-          <nuxt />
-        </v-flex>
-      </v-layout>
+        <v-container fluid>
+          <v-row>
+            <v-col cols="4">
+              <div class="side">
+                <h3>ユーザー情報</h3>
+                <p>ユーザー名が入ります</p>
+                <v-list>
+                  <v-list-item to="/">検索</v-list-item>
+                  <v-list-item to="/playlist">プレイリスト</v-list-item>
+                </v-list>
+              </div>
+            </v-col>
+            <v-col cols="8">
+              <nuxt />
+            </v-col>
+          </v-row>
+        </v-container>
   </v-app>
 </template>
 
@@ -28,3 +28,12 @@ export default {
   }
 }
 </script>
+
+<style>
+.side {
+  /* position: fixed;
+  width: 25%;
+  border: solid 1px;
+  padding: 10px; */
+}
+</style>

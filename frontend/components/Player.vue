@@ -4,14 +4,14 @@
       <p v-show="res" class="message">{{ res }}</p>
       <v-card-text v-if="trackName">{{ trackName + ' / ' + artistName }}</v-card-text>
       <vuetify-audio :file="src" ref="player" :canPlay="play()" class="player"></vuetify-audio>
-      <v-btn @click="submit(trackId, trackName, previewUrl, artistName, artistId)" flat block large>この曲を追加する</v-btn>
+      <v-btn @click="submit(trackId, trackName, previewUrl, artistName, artistId)" text block large>この曲を追加する</v-btn>
     </v-card>
   </div>
 </template>
 
 <script>
 import axios from 'axios'
-import VuetifyAudio from 'vuetify-audio'
+import VuetifyAudio from '~/components/Audio.vue'
 
 export default {
   props: {

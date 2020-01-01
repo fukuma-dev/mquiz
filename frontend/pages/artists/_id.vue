@@ -1,9 +1,9 @@
 <template>
-    <v-container>
+    <div>
       <h2>{{ results[1].artistName }}</h2>
       <p>{{ count-1 }}件</p>
       <div v-for="n in results" :key="n.trackId">
-        <v-card v-if="n.trackName" class="pa-2 my-2" outlined tile @click="set(n.artistId, n.artistName, n.trackId, n.trackName, n.previewUrl)" hover="true">
+        <v-card v-if="n.trackName" class="pa-2 my-2" outlined @click="set(n.artistId, n.artistName, n.trackId, n.trackName, n.previewUrl)" :hover="hover">
           <v-avatar size="60" tile>
             <img :src="n.artworkUrl100">
           </v-avatar>
@@ -17,7 +17,7 @@
         :artistName="artistName"
         :src="src">
       </Player>
-    </v-container>
+    </div>
 </template>
 
 <script>
@@ -32,6 +32,8 @@ export default {
       trackName: '',
       artistId: '',
       artistName: '',
+      previewUrl: '',
+      hover: true,
       canPlay: () => {}
     }
   },
