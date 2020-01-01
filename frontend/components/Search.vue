@@ -1,8 +1,8 @@
 <template>
   <v-container class="pb-0 container">
     <v-layout>
-      <v-text-field v-model="term" v-on:keyup.enter="fetchResults(term)" @change="fetchResults(term)" placeholder="スピッツ" solo></v-text-field>
-      <v-btn @click="fetchResults(term)">検索</v-btn>
+      <v-text-field v-model="term" v-on:keyup.enter="fetchResults(term)" @change="fetchResults(term)" placeholder="スピッツ" outlined></v-text-field>
+      <v-btn @click="fetchResults(term)" depressed large>検索</v-btn>
     </v-layout>
     <div v-if="count > 0" class="results">
       <li v-for="n in results" :key="n.artistId" class="results__list">
@@ -13,7 +13,7 @@
   </v-container>
 </template>
 
-<style>
+<style scoped>
 .container {
   position: relative;
 }

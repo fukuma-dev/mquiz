@@ -1,10 +1,10 @@
 <template>
   <div class="audio">
-    <v-card>
-      <p v-show="res" class="message">{{ res }}</p>
-      <v-card-text v-if="trackName">{{ trackName + ' / ' + artistName }}</v-card-text>
-      <vuetify-audio :file="src" ref="player" class="player"></vuetify-audio>
-      <v-btn @click="submit(trackId, trackName, previewUrl, artistName, artistId)" :disabled="!trackName" text block large>この曲を追加する</v-btn>
+    <v-card class="card">
+      <!-- <p v-show="res" class="message">{{ res }}</p> -->
+      <v-card-text v-if="audio.trackName">{{ audio.trackName + ' / ' + audio.artistName }}</v-card-text>
+      <vuetify-audio :file="audio.previewUrl" ref="player" class="player"></vuetify-audio>
+      <v-btn @click="submit(audio.trackId, audio.trackName, audio.previewUrl, audio.artistName, audio.artistId)" :disabled="!audio.trackName" text block large>この曲を追加する</v-btn>
     </v-card>
   </div>
 </template>
@@ -16,11 +16,11 @@ import VuetifyAudio from '~/components/Audio.vue'
 export default {
   props: {
     res: '',
-    trackId: '',
-    trackName: '',
-    artistId: '',
-    artistName: '',
-    src: '',
+  },
+  computed: {
+    audio () {
+      return this.$store.state.audio
+    }
   },
   methods: {
     submit(trackId, trackName, previewUrl, artistName, artistId) {
@@ -42,18 +42,14 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .audio {
-  width: 30%;
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  margin: 15px;
-
+  margin-top: 50px;
+  width: 100%;
 }
 .message {
   position: absolute;
-  top: -60px;
+  bottom: -100px;
   left: 0;
   z-index: 1;
   padding: 5px;

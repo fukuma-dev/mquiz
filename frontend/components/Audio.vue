@@ -1,5 +1,5 @@
 <template>
-    <v-card style="text-align: center">
+    <v-card style="text-align: center; box-shadow:none">
         <v-card-text>
             <v-btn  icon class="ma-2" color="teal" @click.native="playing ? pause() : play()" :disabled="!loaded">
                 <v-icon v-if="!playing || paused" class="fas fa-play"></v-icon>
@@ -19,7 +19,7 @@
             <v-progress-linear v-model="percentage" height="5" style="margin-top: 15px; margin-bottom: 15px;" @click.native="setPosition()" color="teal" :disabled="!loaded"></v-progress-linear>
             <p>{{ currentTime }} / {{ duration }}</p>
         </v-card-text>
-        <audio id="player" ref="player" v-on:ended="ended" v-on:canplay="canPlay" :src="file"></audio>
+        <audio id="player" ref="player" v-on:ended="ended" v-on:canplay="canPlay" :src="file" preload="true"></audio>
     </v-card>
 </template>
 <script>

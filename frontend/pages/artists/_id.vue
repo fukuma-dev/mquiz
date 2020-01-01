@@ -1,23 +1,17 @@
 <template>
-    <div>
-      <h2>{{ results[1].artistName }}</h2>
-      <p>{{ count-1 }}件</p>
-      <div v-for="n in results" :key="n.trackId">
-        <v-card v-if="n.trackName" class="pa-2 my-2" outlined @click="set(n.artistId, n.artistName, n.trackId, n.trackName, n.previewUrl)" :hover="hover">
-          <v-avatar size="60" tile>
-            <img :src="n.artworkUrl100">
-          </v-avatar>
-          <span class="ml-2">{{ n.trackName }}</span>
-        </v-card>
-      </div>
-      <Player
-        :trackId="trackId"
-        :trackName="trackName"
-        :artistId="artistId"
-        :artistName="artistName"
-        :src="src">
-      </Player>
-    </div>
+      <v-container>
+        <h3>{{ results[1].artistName }}</h3>
+        <div class="results overflow-y-auto">
+        <div v-for="n in results" :key="n.trackId">
+          <v-card v-if="n.trackName" class="pa-2 my-1" outlined @click="set(n.artistId, n.artistName, n.trackId, n.trackName, n.previewUrl)" :hover="hover">
+            <v-avatar size="40" tile>
+              <img :src="n.artworkUrl100">
+            </v-avatar>
+            <span class="ml-2">{{ n.trackName }}</span>
+          </v-card>
+        </div>
+        </div>
+      </v-container>
 </template>
 
 <script>
@@ -27,23 +21,13 @@ import Player from '~/components/Player.vue'
 export default {
   data() {
     return {
-      src: '',
-      trackId: '',
-      trackName: '',
-      artistId: '',
-      artistName: '',
-      previewUrl: '',
       hover: true,
-      canPlay: () => {}
+      pageNum: 1,
     }
   },
   methods: {
     set(artistId, artistName, trackId, trackName, previewUrl) {
-      this.artistId = artistId
-      this.artistName = artistName
-      this.trackId = trackId
-      this.trackName = trackName
-      this.src = previewUrl
+      this.$store.commit('setAudio', {artistId, artistName, trackId, trackName, previewUrl})
     }
   },
   async asyncData ({params}) {
@@ -51,7 +35,6 @@ export default {
 
       return {
         results: data.results,
-        count: data.resultCount
       }
   },
   components: {
@@ -59,3 +42,9 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.results {
+  max-height: 530px;
+}
+</style>

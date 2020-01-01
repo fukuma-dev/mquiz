@@ -1,10 +1,8 @@
 <template>
-  <v-content>
-    <v-container>
-      <h3>楽曲検索</h3>
-      <Search></Search>
-    </v-container>
-  </v-content>
+  <div>
+    <h3>楽曲検索</h3>
+    <Search></Search>
+  </div>
 </template>
 
 <script>
