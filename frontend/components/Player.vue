@@ -3,8 +3,8 @@
     <v-card>
       <p v-show="res" class="message">{{ res }}</p>
       <v-card-text v-if="trackName">{{ trackName + ' / ' + artistName }}</v-card-text>
-      <vuetify-audio :file="src" ref="player" :canPlay="play()" class="player"></vuetify-audio>
-      <v-btn @click="submit(trackId, trackName, previewUrl, artistName, artistId)" text block large>この曲を追加する</v-btn>
+      <vuetify-audio :file="src" ref="player" class="player"></vuetify-audio>
+      <v-btn @click="submit(trackId, trackName, previewUrl, artistName, artistId)" :disabled="!trackName" text block large>この曲を追加する</v-btn>
     </v-card>
   </div>
 </template>
@@ -34,9 +34,6 @@ export default {
       .then(response => {
         this.res = response.data
       })
-    },
-    play() {
-      console.log('test')
     }
   },
   components: {
