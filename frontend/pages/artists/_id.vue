@@ -28,9 +28,8 @@ import axios from "axios";
 export default {
   data() {
     return {
-      hover: true,
-      pageNum: 1
-    };
+      hover: true
+    }
   },
   methods: {
     set(artistId, artistName, trackId, trackName, previewUrl) {
@@ -40,7 +39,7 @@ export default {
         trackId,
         trackName,
         previewUrl
-      });
+      })
     }
   },
   async asyncData({ params }) {
@@ -50,9 +49,9 @@ export default {
 
     return {
       results: data.results
-    };
+    }
   }
-};
+}
 </script>
 
 <style scoped>
