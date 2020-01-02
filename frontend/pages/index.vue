@@ -1,16 +1,14 @@
 <template>
   <div>
     <h3>楽曲検索</h3>
-    <Search></Search>
+    <custom-search />
   </div>
 </template>
 
 <script>
-import Search from '~/components/Search.vue'
-
 export default {
   components: {
-    Search
+    CustomSearch: () => import("~/components/Search.vue")
   }
-}
+};
 </script>
