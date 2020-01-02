@@ -8,7 +8,7 @@
 <script>
 export default {
   components: {
-    CustomSearch: () => import("~/components/Search.vue")
+    CustomSearch: () => import('~/components/Search.vue')
   }
 };
 </script>

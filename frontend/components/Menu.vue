@@ -19,15 +19,15 @@
 export default {
   data() {
     return {
-      trackId: "",
-      trackName: "",
-      artistId: "",
-      artistName: "",
-      src: ""
+      trackId: '',
+      trackName: '',
+      artistId: '',
+      artistName: '',
+      src: ''
     }
   },
   components: {
-    AudioPlayer: () => import("~/components/AudioPlayer.vue")
+    AudioPlayer: () => import('~/components/AudioPlayer.vue')
   }
 }
 </script>

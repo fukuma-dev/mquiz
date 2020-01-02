@@ -74,7 +74,7 @@ export default {
         }
     },
     components: {
-      CustomAudio: () => import("~/components/Audio.vue")
+      CustomAudio: () => import('~/components/Audio.vue')
     }
 }
 </script>

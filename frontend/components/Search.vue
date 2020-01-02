@@ -6,15 +6,14 @@
         v-on:keyup.enter="search(term)"
         @change="search(term)"
         placeholder="スピッツ"
-        outlined
-      ></v-text-field>
+        outlined />
       <v-btn @click="search(term)" depressed large>検索</v-btn>
     </v-layout>
     <div v-if="count > 0" class="results">
       <li v-for="n in results" :key="n.artistId" class="results__list">
-        <nuxt-link :to="`/artists/${n.artistId}`" class="results__list_link">{{
-          n.artistName
-        }}</nuxt-link>
+        <nuxt-link :to="`/artists/${n.artistId}`" class="results__list_link">
+          {{ n.artistName}}
+        </nuxt-link>
       </li>
     </div>
     <p v-if="count === 0">
@@ -24,13 +23,13 @@
 </template>
 
 <script>
-import axios from "axios";
+import axios from 'axios';
 
 export default {
   data() {
     return {
-      term: "",
-      results: "",
+      term: '',
+      results: '',
       count: false
     };
   },

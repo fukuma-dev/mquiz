@@ -23,7 +23,7 @@
 </template>
 
 <script>
-import axios from "axios";
+import axios from 'axios'
 
 export default {
   data() {
@@ -32,8 +32,8 @@ export default {
     }
   },
   methods: {
-    set( trackId, trackName, artistId, artistName, previewUrl) {
-      this.$store.commit("setAudio", {
+    set(trackId, trackName, artistId, artistName, previewUrl) {
+      this.$store.commit('setAudio', {
         trackId,
         trackName,
         artistId,
@@ -45,7 +45,7 @@ export default {
   async asyncData({ params }) {
     const { data } = await axios.get(
       `http://itunes.apple.com/lookup?id=${params.id}&country=JP&lang=ja_jp&entity=song&sort=recent&limit=200`
-    );
+    )
 
     return {
       results: data.results
