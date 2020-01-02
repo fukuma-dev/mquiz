@@ -5,7 +5,8 @@ export const state = () => ({
     artistId: '',
     artistName: '',
     previewUrl: ''
-  }
+  },
+  playlist: []
 })
 
 export const mutations = {
@@ -15,5 +16,14 @@ export const mutations = {
     state.audio.artistId = artistId
     state.audio.artistName = artistName
     state.audio.previewUrl = previewUrl
+  },
+  pushAudio (state,  { trackId, trackName, artistId, artistName, previewUrl }) {
+    state.playlist.push({
+      trackId: trackId,
+      trackName: trackName,
+      artistId: artistId,
+      artistName: artistName,
+      previewUrl: previewUrl
+    })
   }
 }

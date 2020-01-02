@@ -8,7 +8,7 @@
           class="pa-2 my-1"
           outlined
           @click="
-            set(n.artistId, n.artistName, n.trackId, n.trackName, n.previewUrl)
+            set(n.trackId, n.trackName, n.artistId, n.artistName, n.previewUrl)
           "
           :hover="hover"
         >
@@ -32,12 +32,12 @@ export default {
     }
   },
   methods: {
-    set(artistId, artistName, trackId, trackName, previewUrl) {
+    set( trackId, trackName, artistId, artistName, previewUrl) {
       this.$store.commit("setAudio", {
-        artistId,
-        artistName,
         trackId,
         trackName,
+        artistId,
+        artistName,
         previewUrl
       })
     }

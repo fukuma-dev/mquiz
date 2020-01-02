@@ -11,12 +11,12 @@
         class="player" />
       <v-btn
         @click="
-          submit(
+          pushAudio(
             audio.trackId,
             audio.trackName,
-            audio.previewUrl,
+            audio.artistId,
             audio.artistName,
-            audio.artistId
+            audio.previewUrl
           )
         "
         :disabled="!audio.trackName"
@@ -42,19 +42,28 @@ export default {
     }
   },
   methods: {
-    submit(trackId, trackName, previewUrl, artistName, artistId) {
-      axios
-        .post("http://localhost:3000/tracks", {
-          trackId: trackId,
-          trackName: trackName,
-          previewUrl: previewUrl,
-          artistName: artistName,
-          artistId: artistId
-        })
-        .then(response => {
-          this.res = response.data;
-        });
-    }
+    pushAudio(trackId, trackName, artistId, artistName, previewUrl) {
+      this.$store.commit("pushAudio", {
+        trackId,
+        trackName,
+        artistId,
+        artistName,
+        previewUrl
+      })
+    },
+    // submit(trackId, trackName, previewUrl, artistName, artistId) {
+    //   axios
+    //     .post("http://localhost:3000/tracks", {
+    //       trackId: trackId,
+    //       trackName: trackName,
+    //       previewUrl: previewUrl,
+    //       artistName: artistName,
+    //       artistId: artistId
+    //     })
+    //     .then(response => {
+    //       this.res = response.data;
+    //     });
+    // }
   },
   components: {
     CustomAudio: () => import("~/components/Audio.vue")
