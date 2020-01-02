@@ -1,15 +1,14 @@
 <template>
   <div class="audio">
     <v-card class="card">
-      <!-- <p v-show="res" class="message">{{ res }}</p> -->
+      <p v-show="res" class="message">{{ res }}</p>
       <v-card-text v-if="audio.trackName">{{
         audio.trackName + " / " + audio.artistName
       }}</v-card-text>
-      <vuetify-audio
+      <custom-audio
         :file="audio.previewUrl"
         ref="player"
-        class="player"
-      ></vuetify-audio>
+        class="player" />
       <v-btn
         @click="
           submit(
@@ -32,7 +31,6 @@
 
 <script>
 import axios from "axios";
-import VuetifyAudio from "~/components/Audio.vue";
 
 export default {
   props: {
@@ -59,7 +57,7 @@ export default {
     }
   },
   components: {
-    "vuetify-audio": VuetifyAudio
+    CustomAudio: () => import("~/components/Audio.vue")
   }
 };
 </script>
