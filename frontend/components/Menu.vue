@@ -1,7 +1,5 @@
 <template>
   <div>
-    <!-- <h3>ユーザー情報</h3>
-    <p>ユーザー名が入ります</p> -->
     <v-list class="pa-0" flat>
       <v-list-item to="/" tile>検索</v-list-item>
       <v-list-item to="/playlist">プレイリスト</v-list-item>
