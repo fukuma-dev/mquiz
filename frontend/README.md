@@ -1,4 +1,4 @@
-# chosei-kanji
+# イントロクイズを作れるアプリ
 
 > My extraordinary Nuxt.js project
 
