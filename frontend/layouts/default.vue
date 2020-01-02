@@ -7,7 +7,7 @@
           <v-col cols="4" v-if="$route.name !== 'playlist-id'">
             <side-menu />
           </v-col>
-          <v-col :cols="{ '8': $route.name !== 'playlist-id', '12': $route.name === 'playlist-id' }">
+          <v-col :cols="cols">
             <nuxt />
           </v-col>
         </v-row>
@@ -18,6 +18,11 @@
 
 <script>
 export default {
+  computed: {
+    cols() {
+      return (this.$route.name !== 'playlist-id') ? 8 : 12
+    }
+  },
   data() {
     return {
       trackId: "",
