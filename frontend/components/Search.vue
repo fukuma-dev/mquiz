@@ -9,9 +9,19 @@
         outlined />
       <v-btn @click="search(term)" depressed large>検索</v-btn>
     </v-layout>
-    <div v-if="count > 0" class="results">
-      <li v-for="n in results" :key="n.artistId" class="results__list">
-        <nuxt-link :to="`/artists/${n.artistId}`" class="results__list_link">
+    <div
+      v-if="count > 0"
+      class="results"
+    >
+      <li
+        v-for="n in results"
+        :key="n.artistId"
+        class="results__list"
+      >
+        <nuxt-link
+          :to="`/artists/${n.artistId}`"
+          class="results__list_link"
+        >
           {{ n.artistName}}
         </nuxt-link>
       </li>
@@ -23,7 +33,7 @@
 </template>
 
 <script>
-import axios from 'axios';
+import axios from 'axios'
 
 export default {
   data() {
@@ -40,8 +50,8 @@ export default {
           `http://itunes.apple.com/search?lang=ja_jp&country=JP&term=${term}&media=music&entity=musicArtist&attribute=artistTerm&attribute=artistTerm&limit=20`
         )
         .then(response => {
-          this.results = response.data.results;
-          this.count = response.data.resultCount;
+          this.results = response.data.results
+          this.count = response.data.resultCount
         });
     }
   }

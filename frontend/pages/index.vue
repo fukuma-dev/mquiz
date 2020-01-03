@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h3>楽曲検索</h3>
+    <h3>アーティストから検索</h3>
     <custom-search />
   </div>
 </template>

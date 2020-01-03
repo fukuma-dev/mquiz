@@ -1,7 +1,7 @@
 <template>
   <v-container>
     <div class="mb-5">
-      <h3>プレイリスト</h3>
+      <h3>作成したプレイリスト</h3>
       <ul>
         <li class="my-5"><nuxt-link to="/playlist/1">プレイリストその1</nuxt-link></li>
       </ul>
@@ -34,7 +34,7 @@
           </v-container>
         </v-card>
       </dragg-able>
-      <v-btn @click="registPlaylist()" block>登録</v-btn>
+      <v-btn @click="registPlaylist()" block text outlined>登録</v-btn>
     </div>
   </v-container>
 </template>
@@ -42,6 +42,9 @@
 import axios from 'axios'
 
 export default {
+  components: {
+    DraggAble: () =>  import('vuedraggable')
+  },
   data() {
     return {
       results: [],
@@ -75,9 +78,6 @@ export default {
       return {
         results: data,
       }
-  },
-  components: {
-    DraggAble: () =>  import('vuedraggable')
   }
 }
 </script>

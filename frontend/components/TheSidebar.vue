@@ -17,6 +17,9 @@
 
 <script>
 export default {
+  components: {
+    AudioPlayer: () => import('~/components/AudioPlayer.vue')
+  },
   data() {
     return {
       trackId: '',
@@ -25,9 +28,6 @@ export default {
       artistName: '',
       src: ''
     }
-  },
-  components: {
-    AudioPlayer: () => import('~/components/AudioPlayer.vue')
   }
 }
 </script>

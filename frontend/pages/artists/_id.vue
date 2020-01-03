@@ -2,7 +2,10 @@
   <v-container>
     <h3>{{ results[1].artistName }}</h3>
     <div class="results overflow-y-auto">
-      <div v-for="n in results" :key="n.trackId">
+      <div
+       v-for="n in results"
+       :key="n.trackId"
+      >
         <v-card
           v-if="n.trackName"
           class="pa-2 my-1"
@@ -12,10 +15,19 @@
           "
           :hover="hover"
         >
-          <v-avatar size="40" tile>
-            <img :src="n.artworkUrl100" />
+          <v-avatar
+            size="40"
+            tile
+          >
+            <img
+              :src="n.artworkUrl100"
+            />
           </v-avatar>
-          <span class="ml-2">{{ n.trackName }}</span>
+          <span
+            class="ml-2"
+          >
+            {{ n.trackName }}
+          </span>
         </v-card>
       </div>
     </div>

@@ -33,8 +33,13 @@
 import axios from 'axios'
 
 export default {
-  props: {
-    res: ''
+  components: {
+    CustomAudio: () => import('~/components/Audio.vue')
+  },
+  data() {
+    return {
+      res: ''
+    }
   },
   computed: {
     audio() {
@@ -50,6 +55,8 @@ export default {
         artistName,
         previewUrl
       })
+
+      this.res = `「${trackName}」を保存しました`
     },
     // submit(trackId, trackName, previewUrl, artistName, artistId) {
     //   axios
@@ -64,9 +71,6 @@ export default {
     //       this.res = response.data
     //     })
     // }
-  },
-  components: {
-    CustomAudio: () => import('~/components/Audio.vue')
   }
 }
 </script>
