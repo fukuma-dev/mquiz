@@ -1,19 +1,37 @@
 <template>
   <v-container>
-    <h2>プレイリスト</h2>
-    <div>
-      <li><nuxt-link to="/playlist/1">プレイリストその1</nuxt-link></li>
+    <div class="mb-5">
+      <h3>プレイリスト</h3>
+      <ul>
+        <li class="my-5"><nuxt-link to="/playlist/1">プレイリストその1</nuxt-link></li>
+      </ul>
     </div>
     <div v-if="getPlaylist[0]">
-      <h2>作成中のプレイリスト</h2>
+      <h3>作成中のプレイリスト</h3>
+      <v-text-field
+        v-model="playlistName"
+        placeholder="プレイリスト名を入力"
+         />
       <dragg-able :options="options" class="my-5">
         <v-card
-          v-for="n in getPlaylist"
+          v-for="(n, i) in getPlaylist"
           :key="n.trackId"
           @click="set(n.trackId, n.trackName, n.artistId, n.artistName, n.previewUrl)"
           class="my-1"
-          outlined>
-          <v-card-text>{{ n.trackName }}</v-card-text>
+          outlined
+        >
+          <v-container class="py-0">
+            <v-row justify="space-between">
+              <v-col cols="10" class="pa-0">
+                <v-card-text class="track__name pb-0">{{ n.trackName }}</v-card-text>
+              </v-col>
+              <v-col cols="auto" class="pa-0">
+                <v-card-actions class="">
+                  <v-btn @click="deleteAudio(i)" class="" text><v-icon class="fa fa-trash"></v-icon></v-btn>
+                </v-card-actions>
+              </v-col>
+            </v-row>
+          </v-container>
         </v-card>
       </dragg-able>
       <v-btn @click="registPlaylist()" block>登録</v-btn>
@@ -29,7 +47,8 @@ export default {
       results: [],
       options: {
         animation: 200
-      }
+      },
+      playlistName: '無名のプレイリスト'
     }
   },
   computed: {
@@ -46,6 +65,9 @@ export default {
         artistName,
         previewUrl
       })
+    },
+    deleteAudio(i) {
+      this.$store.commit('deleteAudio', i)
     }
   },
   async asyncData ({params}) {
@@ -59,3 +81,12 @@ export default {
   }
 }
 </script>
+
+<style>
+.track__name {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+}
+</style>

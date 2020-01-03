@@ -25,5 +25,8 @@ export const mutations = {
       artistName: artistName,
       previewUrl: previewUrl
     })
+  },
+  deleteAudio (state, i) {
+    state.playlist.splice(i, 1)
   }
 }
