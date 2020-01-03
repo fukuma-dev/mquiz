@@ -5,7 +5,7 @@
       <v-container>
         <v-row>
           <v-col cols="4" v-if="$route.name !== 'playlist-id'">
-            <side-menu />
+            <custom-sidebar />
           </v-col>
           <v-col :cols="cols">
             <nuxt />
@@ -24,8 +24,8 @@ export default {
     },
   },
   components: {
-    CustomHeader: () => import('~/components/Header.vue'),
-    SideMenu: () => import('~/components/Menu.vue')
+    CustomHeader: () => import('~/components/TheHeader.vue'),
+    CustomSidebar: () => import('~/components/TheSidebar.vue')
   }
 }
 </script>
