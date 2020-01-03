@@ -3,12 +3,12 @@
     <nuxt-link to="/playlist">topへ戻る</nuxt-link>
     <div v-if="!isStart">
       <v-btn
-        @click="quizStart"
         block
         text
         outlined
         height="100px"
         class="start-btn"
+        @click="quizStart"
       >
         開始しますか？
       </v-btn>
@@ -41,12 +41,12 @@
             </v-col>
           </v-row>
           <v-btn
-            @click="switchPage"
             block
             large
             text
             outlined
             height="50px"
+            @click="switchPage"
           >
             答えを見る
           </v-btn>
@@ -61,12 +61,12 @@
           </p>
           <v-btn
             v-if="trackExists(results, n)"
-            @click="next"
             block
             large
             text
             outlined
             height="50px"
+            @click="next"
           >
             次の問題へ
           </v-btn>

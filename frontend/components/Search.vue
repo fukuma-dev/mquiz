@@ -7,7 +7,13 @@
         @change="search(term)"
         placeholder="スピッツ"
         outlined />
-      <v-btn @click="search(term)" depressed large>検索</v-btn>
+      <v-btn
+        depressed
+        large
+        @click="search(term)"
+      >
+        検索
+      </v-btn>
     </v-layout>
     <div
       v-if="count > 0"

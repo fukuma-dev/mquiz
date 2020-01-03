@@ -8,12 +8,12 @@
       >
         <v-card
           v-if="n.trackName"
-          class="pa-2 my-1"
+          :hover="hover"
           outlined
+          class="pa-2 my-1"
           @click="
             set(n.trackId, n.trackName, n.artistId, n.artistName, n.previewUrl)
           "
-          :hover="hover"
         >
           <v-avatar
             size="40"

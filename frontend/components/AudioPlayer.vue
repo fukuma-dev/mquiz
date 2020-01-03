@@ -10,6 +10,10 @@
         ref="player"
         class="player" />
       <v-btn
+        :disabled="!audio.trackName"
+        text
+        block
+        large
         @click="
           pushAudio(
             audio.trackId,
@@ -19,10 +23,6 @@
             audio.previewUrl
           )
         "
-        :disabled="!audio.trackName"
-        text
-        block
-        large
         >この曲を追加する</v-btn
       >
     </v-card>

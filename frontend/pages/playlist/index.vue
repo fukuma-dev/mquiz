@@ -16,25 +16,46 @@
         <v-card
           v-for="(n, i) in getPlaylist"
           :key="n.trackId"
-          @click="set(n.trackId, n.trackName, n.artistId, n.artistName, n.previewUrl)"
-          class="my-1"
           outlined
+          class="my-1"
+          @click="
+            set(n.trackId, n.trackName, n.artistId, n.artistName, n.previewUrl)
+          "
+
         >
           <v-container class="py-0">
             <v-row justify="space-between">
-              <v-col cols="10" class="pa-0">
+              <v-col
+                cols="10"
+                class="pa-0"
+              >
                 <v-card-text class="track__name pb-0">{{ n.trackName }}</v-card-text>
               </v-col>
-              <v-col cols="auto" class="pa-0">
-                <v-card-actions class="">
-                  <v-btn @click="deleteAudio(i)" class="" text><v-icon class="fa fa-trash"></v-icon></v-btn>
+              <v-col
+                cols="auto"
+                class="pa-0"
+              >
+                <v-card-actions>
+                  <v-btn
+                    text
+                    @click="deleteAudio(i)"
+                  >
+                    <v-icon class="fa fa-trash"></v-icon>
+                  </v-btn>
                 </v-card-actions>
               </v-col>
             </v-row>
           </v-container>
         </v-card>
       </dragg-able>
-      <v-btn @click="registPlaylist()" block text outlined>登録</v-btn>
+      <v-btn
+        block
+        text
+        outlined
+        @click="registPlaylist()"
+      >
+        登録
+      </v-btn>
     </div>
   </v-container>
 </template>
@@ -74,10 +95,11 @@ export default {
     }
   },
   async asyncData ({params}) {
-      const { data } = await axios.get(`http://localhost:3000/tracks`)
-      return {
-        results: data,
-      }
+    const { data } = await axios.get(`http://localhost:3000/tracks`)
+
+    return {
+      results: data,
+    }
   }
 }
 </script>
