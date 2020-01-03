@@ -2,9 +2,12 @@
   <div class="audio">
     <v-card class="card">
       <p v-show="res" class="message">{{ res }}</p>
-      <v-card-text v-if="audio.trackName">{{
-        audio.trackName + " / " + audio.artistName
-      }}</v-card-text>
+      <v-card-text
+        v-if="audio.trackName"
+        key="audio-title"
+      >
+        {{ audio.trackName + " / " + audio.artistName }}
+      </v-card-text>
       <custom-audio
         :file="audio.previewUrl"
         ref="player"

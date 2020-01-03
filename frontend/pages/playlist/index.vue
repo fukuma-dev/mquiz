@@ -6,7 +6,10 @@
         <li class="my-5"><nuxt-link to="/playlist/1">プレイリストその1</nuxt-link></li>
       </ul>
     </div>
-    <div v-if="getPlaylist[0]">
+    <div
+      v-if="getPlaylist[0]"
+      key="editing-playlist"
+    >
       <h3>作成中のプレイリスト</h3>
       <v-text-field
         v-model="playlistName"

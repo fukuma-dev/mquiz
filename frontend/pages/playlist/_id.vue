@@ -1,7 +1,10 @@
 <template>
   <v-container>
     <nuxt-link to="/playlist">topへ戻る</nuxt-link>
-    <div v-if="!isStart">
+    <div
+      v-if="!isStart"
+      key="before-start"
+    >
       <v-btn
         block
         text
@@ -13,7 +16,10 @@
         開始しますか？
       </v-btn>
     </div>
-    <div v-if="isStart">
+    <div
+      v-if="isStart"
+      key="after-start"
+    >
       <h2>プレイリスト名</h2>
       <h3>第{{ n + 1 }}問</h3>
       <div>
@@ -23,7 +29,10 @@
           autoplay
           loop
         ></audio>
-        <div v-if="!answer">
+        <div
+          v-if="!answer"
+          key="quiz-display"
+        >
           <v-row class="row my-3">
             <v-col cols="6">
               <p class="display-1">A</p><p class="display-3">その1の答えだよ</p>
@@ -52,7 +61,10 @@
           </v-btn>
         </div>
       </div>
-      <div v-if="answer">
+      <div
+        v-if="answer"
+        key="answer-display"
+      >
        <h4>答え</h4>
         <div class="text-center my-4">
           <p class="display-4">
@@ -61,6 +73,7 @@
           </p>
           <v-btn
             v-if="trackExists(results, n)"
+            key="next-quiz"
             block
             large
             text
@@ -72,6 +85,7 @@
           </v-btn>
           <v-btn
             v-else
+            key="end-quiz"
             to="/"
             block
             large

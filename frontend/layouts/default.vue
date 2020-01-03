@@ -7,6 +7,7 @@
           <v-col
             cols="4"
             v-if="$route.name !== 'playlist-id'"
+            key="side-menu"
           >
             <custom-sidebar />
           </v-col>

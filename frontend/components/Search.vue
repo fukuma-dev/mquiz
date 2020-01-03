@@ -17,6 +17,7 @@
     </v-layout>
     <div
       v-if="count > 0"
+      key="results-count-exists"
       class="results"
     >
       <li
@@ -32,7 +33,10 @@
         </nuxt-link>
       </li>
     </div>
-    <p v-if="count === 0">
+    <p
+      v-if="count === 0"
+      key="results-count-zero"
+    >
       "{{ term }}"に該当するアーティストが見つかりませんでした
     </p>
   </v-container>

@@ -8,6 +8,7 @@
       >
         <v-card
           v-if="n.trackName"
+          key="track-name"
           :hover="hover"
           outlined
           class="pa-2 my-1"
