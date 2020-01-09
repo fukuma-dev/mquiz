@@ -1,5 +1,4 @@
 class TracksController < ApplicationController
-  before_action :set_post, only: [:show, :update, :destroy]
   skip_before_action :verify_authenticity_token
 
   def index
@@ -7,15 +6,14 @@ class TracksController < ApplicationController
     render json: @tracks
   end
 
+  def show
+    @tracks = Track.where(playlist_id:params[:id])
+    render json: @tracks
+  end
+
   def create
-    hash = {track_id: params[:trackId], track_name: params[:trackName], preview_url: params[:previewUrl], artist_name: params[:artistName], artist_id: params[:artistId]}
+    hash = { track_id: params[:trackId], track_name: params[:trackName], playlist_id: params[:playlistId], artist_name: params[:artistName], artist_id: params[:artistId], preview_url: params[:previewUrl] }
 
-    @track = Track.new(hash)
-
-    if @track.save
-      render plain: "「#{hash[:track_name]}」を追加しました"
-    else
-      render plain: "「#{hash[:track_name]}」の登録に失敗しました"
-    end
+    @track = Track.create(hash)
   end
 end
