@@ -28,5 +28,17 @@ export const mutations = {
   },
   deleteAudio (state, i) {
     state.playlist.splice(i, 1)
+  },
+  deleteAllAudio (state) {
+    state.playlist.length = 0
+  },
+  updateList (state, { oldIndex, newIndex }) {
+    if (newIndex - oldIndex > 0) {
+      state.playlist.splice(newIndex+1, 0, state.playlist[oldIndex])
+      state.playlist.splice(oldIndex, 1)
+    } else {
+      state.playlist.splice(newIndex, 0, state.playlist[oldIndex])
+      state.playlist.splice(oldIndex+1, 1)
+    }
   }
 }

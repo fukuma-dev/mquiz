@@ -11,7 +11,7 @@
         outlined
         height="100px"
         class="start-btn"
-        @click="quizStart"
+        @click="quizStart(results[n])"
       >
         開始しますか？
       </v-btn>
@@ -29,6 +29,8 @@
           autoplay
           loop
         ></audio>
+        <p>{{ results[n].track_name }}</p>
+        <p v-for="n in answers" :key="n">{{ n }}</p>
         <div
           v-if="!answer"
           key="quiz-display"
@@ -105,37 +107,53 @@
 import axios from 'axios'
 
 export default {
-    components: {
-      CustomAudio: () => import('~/components/Audio.vue')
-    },
-    data() {
-      return {
-        n: 0,
-        answer: false,
-        isStart: false
-      }
-    },
-    methods: {
-      quizStart () {
-        this.isStart = true
-      },
-      switchPage () {
-        this.answer = true
-      },
-      next () {
-        this.n = this.n + 1
-        this.answer = false
-      },
-      trackExists(results, n) {
-        return results[n+1] !== undefined
-      }
-    },
-    async asyncData ({params}) {
-        const { data } = await axios.get(`http://localhost:3000/tracks`)
-        return {
-          results: data,
-        }
+  components: {
+    CustomAudio: () => import('~/components/Audio.vue')
+  },
+  data() {
+    return {
+      n: 0,
+      answer: false,
+      isStart: false,
+      answers: []
     }
+  },
+  methods: {
+    quizStart (results) {
+      this.isStart = true
+      axios.get(`http://itunes.apple.com/lookup?id=${results.artist_id}&country=JP&lang=ja_jp&entity=song`)
+      .then(response => {
+        if (response.data.resultCount >= 4)
+        const apiResults = response.data.results
+        apiResults.shift()
+        apiResults.forEach( function(result, index) {
+          if (results.track_id == `${result.trackId}`) {
+            apiResults.splice(index, 1)
+          }
+        })
+        apiResults[Math.floor(Math.random() * apiResults.length)]
+        apiResults.unshift(results)
+        this.answers = apiResults
+      })
+
+    },
+    switchPage () {
+      this.answer = true
+    },
+    next () {
+      this.n = this.n + 1
+      this.answer = false
+    },
+    trackExists(results, n) {
+      return results[n+1] !== undefined
+    }
+  },
+  async asyncData ({params}) {
+    const { data } = await axios.get(`http://localhost:3000/tracks/${params.id}`)
+    return {
+      results: data,
+    }
+  }
 }
 </script>
 
