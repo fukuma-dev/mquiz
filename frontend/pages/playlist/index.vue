@@ -24,7 +24,6 @@
           @click="
             set(n.trackId, n.trackName, n.artistId, n.artistName, n.previewUrl)
           "
-
         >
           <v-container class="py-0">
             <v-row justify="space-between">

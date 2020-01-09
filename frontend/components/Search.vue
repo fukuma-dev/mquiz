@@ -62,7 +62,7 @@ export default {
         .then(response => {
           this.results = response.data.results
           this.count = response.data.resultCount
-        });
+        })
     }
   }
 };

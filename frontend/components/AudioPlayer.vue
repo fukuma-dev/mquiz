@@ -59,21 +59,8 @@ export default {
         previewUrl
       })
 
-      this.res = `「${trackName}」を保存しました`
-    },
-    // submit(trackId, trackName, previewUrl, artistName, artistId) {
-    //   axios
-    //     .post('http://localhost:3000/tracks', {
-    //       trackId: trackId,
-    //       trackName: trackName,
-    //       previewUrl: previewUrl,
-    //       artistName: artistName,
-    //       artistId: artistId
-    //     })
-    //     .then(response => {
-    //       this.res = response.data
-    //     })
-    // }
+      this.res = `「${trackName}」を追加しました`
+    }
   }
 }
 </script>
