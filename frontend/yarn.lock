@@ -7445,9 +7445,9 @@ vuetify-loader@^1.2.1, vuetify-loader@^1.4.3:
     loader-utils "^1.2.0"
 
 vuetify@^2.1.13:
-  version "2.1.16"
-  resolved "https://registry.yarnpkg.com/vuetify/-/vuetify-2.1.16.tgz#e460c1dd782516f334c6a8adaad32467aba9b5ab"
-  integrity sha512-NfpC85utIQMbBDiunNbwblLXteWscYci6mYJRUvAD6s2Mx4ddFin59vjYolAkMtNXDF/cPzyU7hv4kvrY8MJCQ==
+  version "2.6.10"
+  resolved "https://registry.yarnpkg.com/vuetify/-/vuetify-2.6.10.tgz#b86cd7a97bf8cd3828a72c349795b5b3c539ebc2"
+  integrity sha512-fgUeRDDCwYkwu6WGEEKGe7IdfzOsXJCZGrqkn1pcS2ycuoDL8mR2/dejH5iFNnBY6MnsT365PAGn0J+9otjfQg==
 
 vuex@^3.1.1:
   version "3.1.2"
